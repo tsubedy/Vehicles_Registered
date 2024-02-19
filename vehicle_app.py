@@ -21,7 +21,7 @@ cursor = collection.find()
 Registered_Vehicles = list(cursor)
 US_Registered_Vehicles = pd.DataFrame(Registered_Vehicles, columns =['year', 'state', 'auto', 'bus', 'truck', 'motorcycle'])
 
-
+US_Registered_Vehicles['year'] = pd.to_datetime(US_Registered_Vehicles['year'], format='%Y')
 US_Registered_Vehicles = US_Registered_Vehicles.astype({'auto': 'float64', 'bus': 'float64', 'truck': 'float64', 'motorcycle': 'float64'})
 
 
