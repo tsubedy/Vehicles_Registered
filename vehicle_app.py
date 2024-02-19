@@ -35,11 +35,14 @@ US_Registered_Vehicles['year'] = pd.to_datetime(US_Registered_Vehicles['year'])
 startDate = pd.to_datetime(US_Registered_Vehicles['year']).min()
 endDate = pd.to_datetime(US_Registered_Vehicles['year'].max()
 
-with col1:
-    date1 = pd.to_datetime(st.date_input("Start Year", startDate))
 
-with col2:
-    date2 = pd.to_datetime(st.date_input("End Year", endDate))
+    with col1:
+        date1 = pd.to_datetime(st.date_input("Start Year", startDate))
+
+
+    with col2:
+        date2 = pd.to_datetime(st.date_input("End Year", endDate))
+
 
 US_Registered_Vehicles = US_Registered_Vehicles[(US_Registered_Vehicles["year"] >= date1) & (US_Registered_Vehicles["year"] <= date2)].copy()
 
