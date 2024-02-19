@@ -37,6 +37,7 @@ endDate = pd.to_datetime(US_Registered_Vehicles['year'].max()
 
 with col1:
     date1 = pd.to_datetime(st.date_input("Start Year", startDate))
+
 with col2:
     date2 = pd.to_datetime(st.date_input("End Year", endDate))
 
