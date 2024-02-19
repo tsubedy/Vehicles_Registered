@@ -33,14 +33,14 @@ US_Registered_Vehicles['year'] = pd.to_datetime(US_Registered_Vehicles['year'])
 
 # Getting the min and max date 
 startDate = pd.to_datetime(US_Registered_Vehicles['year']).min()
-endDate = pd.to_datetime(US_Registered_Vehicles['year'].max()
+endDate = pd.to_datetime(US_Registered_Vehicles['year']).max()
 
 with col1:
-    st.header("Seletion of Strating years")
+    st.subheader("Seletion of Strating years")
     date1 = pd.to_datetime(st.date_input("Start Year", startDate))
 
 with col2:
-    st.header("Seletion of Ending Year")
+    st.subheader("Seletion of Ending Year")
     date2 = pd.to_datetime(st.date_input("End Year", endDate))
 
 
