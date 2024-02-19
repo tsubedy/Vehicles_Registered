@@ -44,7 +44,7 @@ with col2:
     date2 = st.number_input("End Year", endDate)
 
 
-US_Registered_Vehicles = US_Registered_Vehicles[(US_Registered_Vehicles["year"] >= date1) & (US_Registered_Vehicles["year"] <= date2)].copy()
+US_Registered_Vehicles = US_Registered_Vehicles[(US_Registered_Vehicles.index >= date1) & (US_Registered_Vehicles.index <= date2)].copy()
 
 st.sidebar.header("Choose your filter: ")
 
