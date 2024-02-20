@@ -66,22 +66,22 @@ with col1:
 
 
 # Define colors for each trace
-colors = ['blue', 'red', 'green', 'orange']
+    colors = ['blue', 'red', 'green', 'orange']
 
 # Create a Plotly figure
-fig = go.Figure()
+    fig = go.Figure()
 
 # Add traces with specified colors
-fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["auto"], mode='lines+markers', name='Auto', line=dict(color=colors[0])))
-fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["truck"], mode='lines+markers', name='Truck', line=dict(color=colors[1])))
-fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["bus"], mode='lines+markers', name='Bus', line=dict(color=colors[2])))
-fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["motorcycle"], mode='lines+markers', name='Motorcycle', line=dict(color=colors[3])))
+    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["auto"], mode='lines+markers', name='Auto', line=dict(color=colors[0])))
+    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["truck"], mode='lines+markers', name='Truck', line=dict(color=colors[1])))
+    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["bus"], mode='lines+markers', name='Bus', line=dict(color=colors[2])))
+    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["motorcycle"], mode='lines+markers', name='Motorcycle', line=dict(color=colors[3])))
 
 # Update layout
-fig.update_layout(title="Yearly Registered Vehicles by Types", xaxis_title="Registered Years", yaxis_title="Number of Vehicles", legend=dict(x=0, y=1, traceorder="normal"))
+    fig.update_layout(title="Yearly Registered Vehicles by Types", xaxis_title="Registered Years", yaxis_title="Number of Vehicles", legend=dict(x=0, y=1, traceorder="normal"))
 
 # Render the Plotly figure within Streamlit
-st.plotly_chart(fig)
+    st.plotly_chart(fig)
 
 
 
