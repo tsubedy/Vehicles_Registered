@@ -24,16 +24,16 @@ US_Registered_Vehicles = pd.DataFrame(Registered_Vehicles, columns =['year', 'st
 # US_Registered_Vehicles['year'] = pd.to_datetime(US_Registered_Vehicles['year'], format='%Y')
 
 # US_Registered_Vehicles = US_Registered_Vehicles.astype({'auto': 'float64', 'bus': 'float64', 'truck': 'float64', 'motorcycle': 'float64'})
-US_Registered_Vehicles = US_Registered_Vehicles.astype({'year': 'int', 'state': 'object', 'auto': 'float64', 'bus': 'float64', 'truck': 'float64', 'motorcycle': 'float64'})
+US_Registered_Vehicles_Year = US_Registered_Vehicles.astype({'year': 'int', 'state': 'object', 'auto': 'float64', 'bus': 'float64', 'truck': 'float64', 'motorcycle': 'float64'})
 
 # Aggregating the vehicle types by year
-US_Registered_Vehicles = US_Registered_Vehicles.groupby(["year"]).agg({"auto":'sum',"truck":'sum', "bus":'sum',"motorcycle":'sum'})
+US_Registered_Vehicles_Year = US_Registered_Vehicles_Year.groupby(["year"]).agg({"auto":'sum',"truck":'sum', "bus":'sum',"motorcycle":'sum'})
 
 col1, col2 = st.columns((2))
 
 # Getting the min and max date 
-startDate = US_Registered_Vehicles.index.min()
-endDate = US_Registered_Vehicles.index.max()
+startDate = US_Registered_Vehicles_Year.index.min()
+endDate = US_Registered_Vehicles_Year.index.max()
 
 with col1:
     st.subheader("Seletion of Strating years")
@@ -44,9 +44,10 @@ with col2:
     date2 = st.number_input("End Year", endDate)
 
 
-US_Registered_Vehicles = US_Registered_Vehicles[(US_Registered_Vehicles.index >= date1) & (US_Registered_Vehicles.index <= date2)].copy()
+US_Registered_Vehicles_Year = US_Registered_Vehicles_Year[(US_Registered_Vehicles_Year.index >= date1) & (US_Registered_Vehicles_Year.index <= date2)].copy()
 
 st.sidebar.header("Choose your filter: ")
+
 
 # Create for State
 state = st.sidebar.multiselect("Statewise Data", US_Registered_Vehicles["state"].unique())
