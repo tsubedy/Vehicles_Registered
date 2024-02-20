@@ -53,17 +53,34 @@ st.sidebar.header("Choose your filter: ")
 state = st.sidebar.multiselect("Statewise Data", US_Registered_Vehicles["state"].unique())
 
 if not state:
-    df2 = US_Registered_Vehicles.copy()
+    US_Registered_Vehicles = US_Registered_Vehicles.copy()
 else:
-    df2 = US_Registered_Vehicles[US_Registered_Vehicles["state"].isin(state)]
+    US_Registered_Vehicles_State = US_Registered_Vehicles[US_Registered_Vehicles["state"].isin(state)]
 
 
+with col1:
+    st.subheader("Year wise number of vehicles")
+    fig = px.bar(US_Registered_Vehicles_Year, x = "Year", y = "Vehicles", text = ['${:,.2f}'.format(x) for x in US_Registered_Vehicles_Year["year"]],template = "seaborn")
+    st.plotly_chart(fig,use_container_width=True, height = 200)
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 
 # Download orginal DataSet
 csv = US_Registered_Vehicles.to_csv(index = False).encode('utf-8')
-st.download_button('Download Data', data = csv, file_name = "Data.csv",mime = "text/csv")
+st.download_button('Download Original Data', data = csv, file_name = "Data.csv",mime = "text/csv")
 
 
 
