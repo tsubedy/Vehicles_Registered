@@ -60,7 +60,7 @@ else:
 
 with col1:
     st.subheader("Year wise number of vehicles")
-    fig = px.bar(US_Registered_Vehicles_Year, x = "year", y = "auto")
+    fig = px.bar(US_Registered_Vehicles_Year, x = index, y = "auto")
     st.plotly_chart(fig,use_container_width=True, height = 200)
 
     
