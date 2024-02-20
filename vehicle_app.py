@@ -36,21 +36,21 @@ startDate = US_Registered_Vehicles_Year.index.min()
 endDate = US_Registered_Vehicles_Year.index.max()
 
 with col1:
-    st.subheader("Seletion of Strating years")
+    st.subheader("Strating Year")
     date1 = st.number_input("Start Year", startDate)
 
 with col2:
-    st.subheader("Seletion of Ending Year")
+    st.subheader("Ending Year")
     date2 = st.number_input("End Year", endDate)
 
 
 US_Registered_Vehicles_Year = US_Registered_Vehicles_Year[(US_Registered_Vehicles_Year.index >= date1) & (US_Registered_Vehicles_Year.index <= date2)].copy()
 
-st.sidebar.header("Choose your filter: ")
+st.sidebar.header("Choose Your Filters:")
 
 
 # Create for State
-state = st.sidebar.multiselect("Statewise Data", US_Registered_Vehicles["state"].unique())
+state = st.sidebar.multiselect("Select States ", US_Registered_Vehicles["state"].unique())
 
 if not state:
     US_Registered_Vehicles = US_Registered_Vehicles.copy()
@@ -84,6 +84,22 @@ with col1:
     st.plotly_chart(fig)
 
 
+    
+with col1:
+
+# Allow users to select one or more states
+    selected_states = st.multiselect("Select State(s)", US_Registered_Vehicles["state"].unique())
+
+# Filter the data based on the selected states
+    filtered_data = US_Registered_Vehicles[US_Registered_Vehicles["state"].isin(selected_states)]
+
+# Create Plotly graphs using the filtered data
+    if not filtered_data.empty:
+    # Example: Create a line plot showing auto registrations over the years for selected states
+        fig = px.line(filtered_data, x="year", y="auto", color="state", title="Auto Registrations by Year")
+        st.plotly_chart(fig)
+    else:
+        st.write("No data available for the selected state(s).")
 
     
     
