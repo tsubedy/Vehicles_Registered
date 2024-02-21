@@ -50,20 +50,16 @@ st.sidebar.header("Choose Your Filters:")
 
 
 # Create for State
-state = st.sidebar.multiselect("Select States ", US_Registered_Vehicles["state"].unique())
+selected_states = st.sidebar.multiselect("Select States ", US_Registered_Vehicles["state"].unique())
 
 if not state:
     US_Registered_Vehicles = US_Registered_Vehicles.copy()
 else:
-    US_Registered_Vehicles_State = US_Registered_Vehicles[US_Registered_Vehicles["state"].isin(state)]
+    US_Registered_Vehicles_State = US_Registered_Vehicles[US_Registered_Vehicles["state"].isin(selected_state)]
 
 
+    
 with col1:
-#     st.subheader("Year wise number of vehicles")
-#     fig = px.bar(US_Registered_Vehicles_Year, x = US_Registered_Vehicles_Year.index, y = "auto")
-#     st.plotly_chart(fig,use_container_width=True, height = 200)
-
-
 
 # Define colors for each trace
     colors = ['blue', 'red', 'green', 'orange']
@@ -81,45 +77,17 @@ with col1:
     fig.update_layout(title="Yearly Registered Vehicles by Types", xaxis_title="Registered Years", yaxis_title="Number of Vehicles", legend=dict(x=0, y=1, traceorder="normal"))
 
 # Render the Plotly figure within Streamlit
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 
     
 with col2:
 
-# # Filter the data based on the selected states
-#     filtered_data = US_Registered_Vehicles_State
-
-# # Create Plotly graphs using the filtered data
-#     if not filtered_data.empty:
-#     # Example: Create a line plot showing auto registrations over the years for selected states
-#         fig = px.line(filtered_data, x="year", y="auto", color="state", title="Auto Registrations by Year")
-#         st.plotly_chart(fig)
-#     else:
-#         st.write("No data available for the selected state(s).")
-
-    
-
-# Filter the data based on the selected states
-# US_Registered_Vehicles_State = US_Registered_Vehicles[US_Registered_Vehicles["state"].isin(selected_states)]
-
-# # Create Plotly graphs using the filtered data
-# if not US_Registered_Vehicles_State.empty:
-#     # Example: Create a line plot showing registrations of all vehicle types over the years for selected states
-#     fig = px.line(US_Registered_Vehicles_State, x="year", y=["auto", "truck", "bus", "motorcycle"], color="state",
-#                   title="Registered Vehicles by Year and Type")
-#     st.plotly_chart(fig)
-# else:
-#     st.write("No data available for the selected state(s).")
-
-
 # Grouping by both 'year' and 'state'
     grouped_data = US_Registered_Vehicles.groupby(['year', 'state'])
 
-    # Applying aggregation functions as needed
-    # For example, getting the sum of values for each group
+    # Applying aggregation functions as needed. For example, getting the sum of values for each group
     summed_data = grouped_data.sum()
-
 
     # Reset index to make 'year' and 'state' as columns
     summed_data_reset = summed_data.reset_index()
@@ -144,17 +112,11 @@ with col2:
     
     
     
-    
-    
-    
 
 
 
 # Download orginal DataSet
 csv = US_Registered_Vehicles.to_csv(index = False).encode('utf-8')
 st.download_button('Download Original Data', data = csv, file_name = "Data.csv",mime = "text/csv")
-
-
-
 
 
