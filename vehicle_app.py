@@ -52,7 +52,7 @@ st.sidebar.header("Choose Your Filters:")
 # Create for State
 selected_states = st.sidebar.multiselect("Select States ", US_Registered_Vehicles["state"].unique())
 
-if not state:
+if not selected_state:
     US_Registered_Vehicles = US_Registered_Vehicles.copy()
 else:
     US_Registered_Vehicles_State = US_Registered_Vehicles[US_Registered_Vehicles["state"].isin(selected_state)]
