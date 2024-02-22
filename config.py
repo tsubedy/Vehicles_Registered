@@ -1,11 +1,9 @@
 {
  "cells": [
   {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "dd10d7f8",
+   "cell_type": "raw",
+   "id": "451cd1c8",
    "metadata": {},
-   "outputs": [],
    "source": [
     "username = \"tsubedy\"\n",
     "password = \"TS24751\""
