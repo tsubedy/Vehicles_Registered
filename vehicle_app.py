@@ -7,6 +7,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import warnings
 warnings.filterwarnings('ignore')
+import config
+
 
 st.set_page_config(page_title="Registered Vehicles", page_icon=":bar_chart:",layout="wide")
 st.title(" :bar_chart: Registered Vehicles EDA")
