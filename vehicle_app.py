@@ -21,7 +21,7 @@ db = client["Registered_Vehicles_db"]
 collection = db.Registered_Vehicles
 cursor = collection.find()
 
-Registered_Vehicles = list(cursor)
+Registered_Vehicles = cursor
 
 
 US_Registered_Vehicles = pd.DataFrame(Registered_Vehicles, columns =['year', 'state', 'auto', 'bus', 'truck', 'motorcycle'])
