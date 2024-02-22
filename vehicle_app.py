@@ -81,29 +81,29 @@ with col1:
 
 
     
-with col2:
+# with col2:
 
-# Grouping by both 'year' and 'state'
-    grouped_data = US_Registered_Vehicles.groupby(['year', 'state'])
+# # Grouping by both 'year' and 'state'
+#     grouped_data = US_Registered_Vehicles.groupby(['year', 'state'])
 
-    # Applying aggregation functions as needed. For example, getting the sum of values for each group
-    summed_data = grouped_data.sum()
+#     # Applying aggregation functions as needed. For example, getting the sum of values for each group
+#     summed_data = grouped_data.sum()
 
-    # Reset index to make 'year' and 'state' as columns
-    summed_data_reset = summed_data.reset_index()
+#     # Reset index to make 'year' and 'state' as columns
+#     summed_data_reset = summed_data.reset_index()
 
-    # Create a scatter plot using Plotly Express
-    fig = px.scatter(summed_data_reset, x='year', y='auto', color='state',
-                     size='auto', hover_data=['truck', 'bus', 'motorcycle'],
-                     title='Registered Vehicles by Year and State',
-                     labels={'auto': 'Number of Auto Vehicles'},
-                     template='plotly_white')
+#     # Create a scatter plot using Plotly Express
+#     fig = px.scatter(summed_data_reset, x='year', y='auto', color='state',
+#                      size='auto', hover_data=['truck', 'bus', 'motorcycle'],
+#                      title='Registered Vehicles by Year and State',
+#                      labels={'auto': 'Number of Auto Vehicles'},
+#                      template='plotly_white')
 
-    # Update y-axis label
-    fig.update_yaxes(title_text='Number of Vehicles')
+#     # Update y-axis label
+#     fig.update_yaxes(title_text='Number of Vehicles')
 
-    # Display the Plotly chart in Streamlit
-    st.plotly_chart(fig)
+#     # Display the Plotly chart in Streamlit
+#     st.plotly_chart(fig)
 
     
     
