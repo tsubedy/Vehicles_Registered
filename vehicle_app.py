@@ -49,11 +49,11 @@ endDate = US_Registered_Vehicles_Year.index.max()
 
 with col1:
     st.subheader("Strating Year")
-    date1 = st.number_input("Start Year", startDate)
+    date1 = st.date_input("Start Year", startDate)
 
 with col2:
     st.subheader("Ending Year")
-    date2 = st.number_input("End Year", endDate)
+    date2 = st.date_input("End Year", endDate)
 
 
 US_Registered_Vehicles_Year = US_Registered_Vehicles_Year[(US_Registered_Vehicles_Year.index >= date1) & (US_Registered_Vehicles_Year.index <= date2)].copy()
