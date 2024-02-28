@@ -44,19 +44,19 @@ US_Registered_Vehicles_Year = US_Registered_Vehicles.groupby("year", as_index = 
 col1, col2 = st.columns((2))
 
 # Getting the min and max date 
-startDate = US_Registered_Vehicles_Year["year"].min()
-endDate = US_Registered_Vehicles_Year["year"].max()
+startDate = pd.to_datetime(US_Registered_Vehicles_Year["year"]).min()
+endDate = pd.to_datetime(US_Registered_Vehicles_Year["year"]).max()
 
 with col1:
     st.subheader("Strating Year")
-    date1 = st.date_input("Start Year", startDate)
+    date1 = pd.to_datetime(st.date_input("Start Year", startDate))
 
 with col2:
     st.subheader("Ending Year")
-    date2 = st.date_input("End Year", endDate)
+    date2 = pd.to_datetime(st.date_input("End Year", endDate))
 
 
-US_Registered_Vehicles_Year = US_Registered_Vehicles_Year[(US_Registered_Vehicles_Year.index >= date1) & (US_Registered_Vehicles_Year.index <= date2)].copy()
+US_Registered_Vehicles_Year = US_Registered_Vehicles_Year[(US_Registered_Vehicles_Year["year"] >= date1) & (US_Registered_Vehicles_Year["year"] <= date2)].copy()
 
 st.sidebar.header("Choose Your Filters:")
 
@@ -79,10 +79,10 @@ with col1:
     fig = go.Figure()
 
 # Add traces with specified colors
-    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["auto"], mode='lines+markers', name='Auto', line=dict(color=colors[0])))
-    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["truck"], mode='lines+markers', name='Truck', line=dict(color=colors[1])))
-    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["bus"], mode='lines+markers', name='Bus', line=dict(color=colors[2])))
-    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year.index, y=US_Registered_Vehicles_Year["motorcycle"], mode='lines+markers', name='Motorcycle', line=dict(color=colors[3])))
+    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year["year"], y=US_Registered_Vehicles_Year["auto"], mode='lines+markers', name='Auto', line=dict(color=colors[0])))
+    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year["year"], y=US_Registered_Vehicles_Year["truck"], mode='lines+markers', name='Truck', line=dict(color=colors[1])))
+    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year["year"], y=US_Registered_Vehicles_Year["bus"], mode='lines+markers', name='Bus', line=dict(color=colors[2])))
+    fig.add_trace(go.Scatter(x=US_Registered_Vehicles_Year["year"], y=US_Registered_Vehicles_Year["motorcycle"], mode='lines+markers', name='Motorcycle', line=dict(color=colors[3])))
 
 # Update layout
     fig.update_layout(title="Yearly Registered Vehicles by Types", xaxis_title="Registered Years", yaxis_title="Number of Vehicles", legend=dict(x=0, y=1, traceorder="normal"))
