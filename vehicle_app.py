@@ -16,7 +16,7 @@ st.title(" :bar_chart: Registered Vehicles EDA")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>',unsafe_allow_html=True)
 
 # Getting dataset from MongoDB database
-client = pymongo.MongoClient("mongodb+srv://{config.username}:{config.password}@cluster1.ppbek.mongodb.net/?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://"tsubedy":"TS24751"@cluster1.ppbek.mongodb.net/?retryWrites=true&w=majority")
 db = client["Registered_Vehicles_db"]
 collection = db.Registered_Vehicles
 cursor = collection.find()
