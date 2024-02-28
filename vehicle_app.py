@@ -63,7 +63,6 @@ else:
     US_Registered_Vehicles_State = US_Registered_Vehicles[US_Registered_Vehicles["state"].isin(selected_states)]
 
 
-    
 with col1:
 
 # Define colors for each trace
