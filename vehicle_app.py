@@ -25,7 +25,7 @@ cursor = collection.find()
 Registered_Vehicles = cursor
 
 
-US_Registered_Vehicles = pd.DataFrame(Registered_Vehicles, columns =['year', 'state', 'auto', 'bus', 'truck', 'motorcycle']).astype({'state': 'object', 'auto': 'float64', 'bus': 'float64', 'truck': 'float64', 'motorcycle': 'float64'})
+US_Registered_Vehicles = pd.DataFrame(Registered_Vehicles, columns =['year', 'state', 'auto', 'bus', 'truck', 'motorcycle']).astype({'year':'datetime64[ns]','state': 'object', 'auto': 'float64', 'bus': 'float64', 'truck': 'float64', 'motorcycle': 'float64'})
 
 if Registered_Vehicles:
     US_Registered_Vehicles = pd.DataFrame(Registered_Vehicles, columns=['year', 'state', 'auto', 'bus', 'truck', 'motorcycle'])
