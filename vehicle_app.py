@@ -44,8 +44,8 @@ US_Registered_Vehicles_Year = US_Registered_Vehicles.groupby("year", as_index = 
 col1, col2 = st.columns((2))
 
 # Getting the min and max date 
-startDate = pd.to_datetime(US_Registered_Vehicles_Year["year"]).min()
-endDate = pd.to_datetime(US_Registered_Vehicles_Year["year"]).max()
+startDate = US_Registered_Vehicles_Year["year"].min()
+endDate = US_Registered_Vehicles_Year["year"].max()
 
 with col1:
     st.subheader("Strating Year")
