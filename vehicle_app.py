@@ -26,6 +26,12 @@ Registered_Vehicles = cursor
 
 US_Registered_Vehicles = pd.DataFrame(Registered_Vehicles, columns =['year', 'state', 'auto', 'bus', 'truck', 'motorcycle'])
 
+if Registered_Vehicles:
+    US_Registered_Vehicles = pd.DataFrame(Registered_Vehicles, columns=['year', 'state', 'auto', 'bus', 'truck', 'motorcycle'])
+else:
+    st.error("No data available from MongoDB.")
+
+
 # US_Registered_Vehicles['year'] = pd.to_datetime(US_Registered_Vehicles['year'], format='%Y')
 
 # US_Registered_Vehicles = US_Registered_Vehicles.astype({'auto': 'float64', 'bus': 'float64', 'truck': 'float64', 'motorcycle': 'float64'})
