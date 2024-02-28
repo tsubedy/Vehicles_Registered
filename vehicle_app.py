@@ -33,7 +33,7 @@ else:
     st.error("No data available from MongoDB.")
 
 
-US_Registered_Vehicles['year'] = pd.to_datetime(US_Registered_Vehicles['year'], format='%Y')
+# US_Registered_Vehicles['year'] = pd.to_datetime(US_Registered_Vehicles['year'], format='%Y')
 
 # US_Registered_Vehicles = US_Registered_Vehicles.astype({'auto': 'float64', 'bus': 'float64', 'truck': 'float64', 'motorcycle': 'float64'})
 # US_Registered_Vehicles_Year = US_Registered_Vehicles.astype({'year': 'int', 'state': 'object', 'auto': 'float64', 'bus': 'float64', 'truck': 'float64', 'motorcycle': 'float64'})
