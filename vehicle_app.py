@@ -39,7 +39,7 @@ US_Registered_Vehicles['year'] = pd.to_datetime(US_Registered_Vehicles['year'], 
 # US_Registered_Vehicles_Year = US_Registered_Vehicles.astype({'year': 'int', 'state': 'object', 'auto': 'float64', 'bus': 'float64', 'truck': 'float64', 'motorcycle': 'float64'})
 
 # Aggregating the vehicle types by year
-US_Registered_Vehicles_Year = US_Registered_Vehicles.groupby(["year"], set_index = False).agg({"auto":'sum',"truck":'sum', "bus":'sum',"motorcycle":'sum'})
+US_Registered_Vehicles_Year = US_Registered_Vehicles.groupby("year", as_index = False).agg({"auto":'sum',"truck":'sum', "bus":'sum',"motorcycle":'sum'})
 
 col1, col2 = st.columns((2))
 
